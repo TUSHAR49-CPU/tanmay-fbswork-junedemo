@@ -1,0 +1,226 @@
+Q2)
+package com.demos.fbs;
+
+public class Node {
+	int data;
+	Node next,prev;
+	
+	Node(int data){
+		this.data = data;
+		this.next = null;
+		this.prev = null;
+	}
+
+	public int getData() {
+		return data;
+	}
+
+	public void setData(int data) {
+		this.data = data;
+	}
+
+	public Node getNext() {
+		return next;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+
+	public Node getPrev() {
+		return prev;
+	}
+
+	public void setPrev(Node prev) {
+		this.prev = prev;
+	}
+}
+package com.demos.fbs;
+
+public class DoublyLinkedList {
+	int data;
+	Node start,prev;
+	
+	
+	public DoublyLinkedList(int data) {
+	super();
+	this.data = data;
+	this.start = null;
+	this.prev = null;
+	}
+	
+	public void insertAtBeg(int data) {
+		
+		Node newNode = new Node(data);
+		if(start == null) {
+			start = newNode;
+			return;
+		}
+		newNode.next=start;
+		start.prev=newNode;
+		start=newNode;
+	}
+	
+	public void insertAtEnd(int data) {
+		Node newNode=new Node(data);
+		if(start==null) {
+			start=newNode;
+			return;
+		}
+		Node p=start;
+		while(p.next!=null) {
+			p=p.next;
+		}
+		newNode.prev=p;
+		p.next=newNode;
+	}
+	
+	public void deletefromBeg() {
+		if(start==null) {
+			System.out.println("List is Empty");
+		}
+		if(start.next==null) {
+			start=null;
+		}else {
+			start=start.next;
+			start.prev=null;
+		}
+		System.out.println("Node Deleted");
+	}
+
+	
+		public void display() {
+		if(start == null) {
+			System.out.println("List is empty.");
+			return;
+		}
+		Node p = start;
+		while(p.next != null) {
+			System.out.print(p.data+" -> ");
+			p = p.next;
+		}
+		System.out.print(p.data+" -> null");
+	}
+}
+
+package com.demos.fbs;
+
+public class MainApp {
+	public static void main(String[] args) {
+		
+		DoublyLinkedList mylist=new DoublyLinkedList(4);
+		
+		mylist.insertAtBeg(10);
+		mylist.insertAtBeg(20);
+		mylist.insertAtBeg(30);
+		mylist.insertAtBeg(40);
+		
+		mylist.insertAtEnd(90);
+		mylist.insertAtEnd(80);
+		mylist.insertAtEnd(70);
+		mylist.insertAtEnd(60);
+		
+		mylist.deletefromBeg();
+		mylist.deletefromBeg();
+		mylist.deletefromBeg();
+		
+	
+	}
+	
+}
+
+Q3)
+package com.demos.fbs;
+
+public class MyStack {
+
+	int[] stack;
+	int size;
+	int top;
+	
+	public MyStack(int size) {
+		this.size=size;
+		this.stack=new int[size];
+		this.top=-1;
+	}
+	public boolean isEmpty() {
+		if(top==-1)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean isfull() {
+		if(top==size-1)
+			return true;
+		else
+			return false;
+	}
+	
+	public void push(int data) {
+		if(isfull()) {
+			System.out.println("Stack is Full");
+		}else {
+			stack[++top]=data;
+			System.out.println("Data inserted successfully.");
+		}
+	}
+	public void pop() {
+		if(isEmpty()) {
+			System.out.println("Stack is Empty.");
+		}else {
+			int x=stack[top];
+			System.out.println(x+"is deleted");
+			top--;
+		}
+	}
+	public void peek() {
+		if(isEmpty()) {
+			System.out.println("Stack is Empty.");
+			return;
+		}
+		System.out.println("Peek element:"+stack[top]);
+	}
+	
+	public void display() {
+		if(isEmpty()) {
+			System.out.print("Stack is Empty.");
+			return;
+		}
+		System.out.println("Peek element:");
+		for(int i=0;i<=top;i++) {
+			System.out.print("\t"+stack[i]);
+		}
+	}
+}
+package com.demos.fbs;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		
+		MyStack st=new MyStack(5);
+		st.isEmpty();
+		st.isfull();
+		st.push(10);
+		st.push(20);
+		st.push(30);
+		st.push(40);
+		st.push(50);
+
+		st.peek();
+		st.peek();
+		st.peek();
+		
+		
+		st.pop();
+		st.pop();
+		st.pop();
+		st.pop();
+	}
+
+}
+
+
+
+Q5)136254
